@@ -1,0 +1,144 @@
+  generator client {
+    provider = "prisma-client"
+    output   = "../src/generated/prisma"
+  }
+
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+
+  enum ProjectStatus {
+    PLANNING
+    IN_PROGRESS
+    COMPLETED
+  }
+
+  enum TaskStatus {
+    TODO
+    IN_PROGRESS
+    REVIEW
+    DONE
+  }
+
+  enum Priority {
+    LOW
+    MEDIUM
+    HIGH
+    URGENT
+  }
+
+  enum NotificationType {
+    PROJECT_CREATED
+    PROJECT_UPDATED
+    PROJECT_DELETED
+
+    TASK_CREATED
+    TASK_UPDATED
+    TASK_DELETED
+
+    TASK_ASSIGNED
+    TASK_COMPLETED
+    TASK_STATUS_CHANGED
+    TASK_DUE_SOON
+    TASK_OVERDUE
+  }
+  model User {
+    id String @id @default(cuid())
+
+    name  String
+    email String @unique
+
+    password String?
+
+    googleId  String? @unique
+    avatarUrl String?
+
+    projects      Project[]
+    tasks         Task[]
+notifications Notification[]
+
+dueSoonNotifications Boolean @default(true)
+
+overdueNotifications Boolean @default(true)
+
+assignmentNotifications Boolean @default(true)
+
+statusNotifications Boolean @default(true)
+
+browserPopups Boolean @default(true)
+notificationSound Boolean @default(true)
+
+notificationRetentionDays Int @default(90)
+
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+  }
+
+  model Project {
+    id          String  @id @default(cuid())
+    title       String
+    description String?
+
+    status ProjectStatus @default(PLANNING)
+
+    ownerId String
+    owner   User   @relation(fields: [ownerId], references: [id])
+
+    tasks         Task[]
+    notifications Notification[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+  model Task {
+    id String @id @default(cuid())
+
+    title       String
+    description String?
+
+    priority Priority   @default(MEDIUM)
+    status   TaskStatus @default(TODO)
+
+    dueDate DateTime?
+
+    projectId String
+    project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+    assignedToId String?
+    assignedTo   User?   @relation(fields: [assignedToId], references: [id])
+
+    notifications Notification[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+  model Notification {
+    id String @id @default(cuid())
+
+    type NotificationType
+
+    title   String
+    message String
+
+    readAt DateTime?
+
+    createdAt DateTime @default(now())
+    expiresAt DateTime
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    taskId String?
+    task   Task?   @relation(fields: [taskId], references: [id], onDelete: SetNull)
+
+    projectId String?
+    project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+    @@index([userId, createdAt])
+    @@index([userId, readAt])
+    @@index([expiresAt])
+    @@index([userId, type, taskId])
+  }
