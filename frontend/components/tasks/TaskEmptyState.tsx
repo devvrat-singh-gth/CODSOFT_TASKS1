@@ -1,0 +1,3 @@
+import { ListTodo } from "lucide-react";
+import EmptyState from "@/components/ui/EmptyState";
+export default function TaskEmptyState({filtered,onCreate}:{filtered:boolean;onCreate:()=>void}){return <EmptyState icon={<ListTodo size={21}/>} title={filtered?"No tasks match these filters":"No tasks yet"} description={filtered?"Try clearing a filter or searching for a different title.":"Create your first task and give your projects a clear next step."} action={<button onClick={onCreate} className="rounded-xl bg-[rgb(var(--primary))] px-4 py-2.5 text-sm font-semibold text-[rgb(var(--primary-foreground))]">Create task</button>}/>}

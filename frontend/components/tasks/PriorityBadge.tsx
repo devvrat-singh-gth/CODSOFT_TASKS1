@@ -1,0 +1,2 @@
+import type { Priority } from "@/types/task";
+export default function PriorityBadge({priority}:{priority:Priority}){const map={LOW:["Low","text-slate-600 dark:text-slate-300 bg-slate-500/10"],MEDIUM:["Medium","text-[rgb(var(--primary))] bg-[rgb(var(--primary)/.1)]"],HIGH:["High","text-amber-600 dark:text-amber-400 bg-amber-500/10"],URGENT:["Urgent","text-[rgb(var(--danger))] bg-[rgb(var(--danger)/.1)]"]} as const;const [label,cls]=map[priority];return <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${cls}`}>{label}</span>}

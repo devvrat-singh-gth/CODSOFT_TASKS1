@@ -1,0 +1,2 @@
+import type { ProjectStatus } from "@/types/project";
+export default function ProjectStatusBadge({status}:{status:ProjectStatus}){const map={PLANNING:["Planning","text-[rgb(var(--muted))] bg-[rgb(var(--surface-muted))]"],IN_PROGRESS:["In progress","text-[rgb(var(--primary))] bg-[rgb(var(--primary)/.1)]"],COMPLETED:["Completed","text-emerald-600 dark:text-emerald-400 bg-emerald-500/10"]} as const;const [label,cls]=map[status];return <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${cls}`}>{label}</span>}
