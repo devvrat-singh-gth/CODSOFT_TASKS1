@@ -141,16 +141,16 @@ useEffect(() => {
             href="/dashboard"
             className="mb-7 flex items-center gap-2 px-2 font-semibold"
           >
-<>
- <img
-  src="/workorbit-logo.svg"
-  alt=""
-  className="h-12 w-12 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)]"
-/>
-  <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-base font-bold text-transparent">
-    WorkOrbit
-  </span>
-</>
+          <>
+          <img
+            src="/workorbit-logo.svg"
+            alt=""
+            className="h-12 w-12 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)]"
+          />
+            <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-base font-bold text-transparent">
+              WorkOrbit
+            </span>
+          </>
           </Link>
         )}
 
