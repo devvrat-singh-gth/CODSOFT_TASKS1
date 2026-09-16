@@ -108,7 +108,7 @@ export default function NotificationButton() {
         aria-expanded={open}
         title="Notifications"
         className={[
-          "relative flex h-10 items-center gap-2 rounded-xl border px-4 text-sm",
+          "relative flex h-10 items-center gap-2 rounded-xl border px-2.5 text-sm",
           "transition-all duration-200",
           "outline-none",
           "focus-visible:ring-4 focus-visible:ring-[rgb(var(--primary)/0.14)]",

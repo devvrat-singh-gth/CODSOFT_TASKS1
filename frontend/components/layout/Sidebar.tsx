@@ -113,11 +113,16 @@ useEffect(() => {
             className="flex items-center gap-2 font-semibold"
             onClick={onClose}
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[rgb(var(--primary))] text-sm font-bold text-[rgb(var(--primary-foreground))]">
-              P
-            </span>
-
-            ProjectFlow
+<>
+ <img
+  src="/workorbit-logo.svg"
+  alt=""
+  className="h-12 w-12 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)]"
+/>
+  <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-base font-bold text-transparent">
+    WorkOrbit
+  </span>
+</>
           </Link>
 
           <button
@@ -136,11 +141,16 @@ useEffect(() => {
             href="/dashboard"
             className="mb-7 flex items-center gap-2 px-2 font-semibold"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[rgb(var(--primary))] text-sm font-bold text-[rgb(var(--primary-foreground))]">
-              P
-            </span>
-
-            ProjectFlow
+<>
+ <img
+  src="/workorbit-logo.svg"
+  alt=""
+  className="h-12 w-12 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)]"
+/>
+  <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-base font-bold text-transparent">
+    WorkOrbit
+  </span>
+</>
           </Link>
         )}
 
@@ -167,9 +177,20 @@ useEffect(() => {
                   }
                   className={cn(
                     "flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition",
-                    active
-                      ? "bg-[rgb(var(--primary)/0.1)] font-semibold text-[rgb(var(--primary))]"
-                      : "text-[rgb(var(--muted))] hover:bg-[rgb(var(--surface-muted))] hover:text-[rgb(var(--foreground))]"
+                   active
+  ? [
+      "bg-[rgb(var(--primary)/0.1)]",
+      "font-semibold",
+      "text-[rgb(var(--primary))]",
+      "shadow-[0_0_20px_rgb(var(--primary)/0.14)]",
+      "ring-1 ring-[rgb(var(--primary)/0.2)]",
+    ].join(" ")
+  : [
+      "text-[rgb(var(--muted))]",
+      "hover:bg-[rgb(var(--surface-muted))]",
+      "hover:text-[rgb(var(--foreground))]",
+      "hover:shadow-[0_0_14px_rgb(var(--primary)/0.08)]",
+    ].join(" ")
                   )}
                 >
                   <Icon size={18} />
@@ -193,13 +214,15 @@ useEffect(() => {
         !profileOpen
       )
     }
-    className="flex w-full items-center gap-3 rounded-xl bg-[rgb(var(--surface-muted)/0.55)] px-3 py-3 text-left transition hover:bg-[rgb(var(--surface-muted))]"
-  >
-<Avatar
-  src={user?.avatarUrl}
-  name={user?.name}
-  size="md"
-/>
+className="flex w-full items-center gap-3 rounded-xl border border-transparent bg-[rgb(var(--surface-muted)/0.55)] px-3 py-3 text-left transition-all duration-200 hover:border-[rgb(var(--primary)/0.2)] hover:bg-[rgb(var(--surface-muted))] hover:shadow-[0_0_18px_rgb(var(--primary)/0.10)]"  >
+<span className="rounded-full p-[2px] bg-gradient-to-br from-sky-400 via-[rgb(var(--primary))] to-violet-500 shadow-[0_0_14px_rgb(var(--primary)/0.42)]">
+  <Avatar
+    src={user?.avatarUrl}
+    name={user?.name}
+    size="md"
+    className="ring-0"
+  />
+</span>
 
     <div className="min-w-0 flex-1">
       <p className="truncate text-sm font-medium">

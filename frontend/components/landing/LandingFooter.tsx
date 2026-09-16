@@ -9,7 +9,7 @@ export default function LandingFooter() {
             href="/"
             className="font-semibold"
           >
-            ProjectFlow
+            WorkOrbit
           </Link>
 
           <p className="mt-1 text-xs opacity-50">
@@ -50,7 +50,7 @@ export default function LandingFooter() {
 
       <div className="border-t">
         <div className="container-shell py-5 text-xs opacity-40">
-          © {new Date().getFullYear()} ProjectFlow. All rights reserved.
+          © {new Date().getFullYear()} WorkOrbit. All rights reserved.
         </div>
       </div>
     </footer>

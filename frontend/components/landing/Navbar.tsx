@@ -389,7 +389,7 @@ export default function Navbar() {
             </span>
 
             <span className="text-lg font-semibold tracking-tight">
-              ProjectFlow
+              WorkOrbit
             </span>
           </Link>
 

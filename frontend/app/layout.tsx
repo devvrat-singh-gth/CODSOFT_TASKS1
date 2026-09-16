@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ProjectFlow",
+  title: "WorkOrbit",
   description:
     "Plan projects, manage tasks, and stay on track.",
 };

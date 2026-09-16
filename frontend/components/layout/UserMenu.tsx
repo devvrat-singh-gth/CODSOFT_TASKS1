@@ -26,11 +26,14 @@ export default function UserMenu() {
       aria-label="Open account menu"
       className="flex items-center gap-2 rounded-full outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--primary)/0.14)]"
     >
-      <Avatar
-        name={user?.name}
-        src={user?.avatarUrl}
-        size="sm"
-      />
+<span className="rounded-full p-[2px] bg-gradient-to-br from-sky-400 via-[rgb(var(--primary))] to-violet-500 shadow-[0_0_14px_rgb(var(--primary)/0.42)]">
+  <Avatar
+    name={user?.name}
+    src={user?.avatarUrl}
+    size="sm"
+    className="ring-0"
+  />
+</span>
 
       <span className="hidden max-w-28 truncate text-sm font-medium sm:block">
         {user?.name || "Account"}

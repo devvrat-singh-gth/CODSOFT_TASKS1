@@ -19,7 +19,7 @@ export default function ThemeProvider({
         "dark",
         "system",
       ]}
-      storageKey="projectflow-theme"
+      storageKey="WorkOrbit-theme"
       disableTransitionOnChange>
       {children}
     </NextThemesProvider>

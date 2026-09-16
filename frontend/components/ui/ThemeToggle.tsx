@@ -61,7 +61,7 @@ export default function ThemeToggle() {
     border
     border-[rgb(var(--border))]
     bg-[rgb(var(--surface))]
-    p-2
+    p-2.5
     transition
     hover:bg-[rgb(var(--surface-muted))]
   "

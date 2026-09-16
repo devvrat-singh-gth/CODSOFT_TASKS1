@@ -131,7 +131,7 @@ export default function AuthShell({
                   </span>
 
                   <span className="text-lg font-semibold tracking-tight">
-                    ProjectFlow
+                    WorkOrbit
                   </span>
                 </Link>
               </div>
@@ -257,7 +257,7 @@ export default function AuthShell({
                   </span>
 
                   <span className="font-semibold">
-                    ProjectFlow
+                    WorkOrbit
                   </span>
                 </Link>
 

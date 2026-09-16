@@ -49,7 +49,7 @@ export default function AppearanceSettings() {
       </h2>
 
       <p className="mt-1 text-sm text-[rgb(var(--muted))]">
-        Customize how ProjectFlow looks.
+        Customize how WorkOrbit looks.
       </p>
 
       <div

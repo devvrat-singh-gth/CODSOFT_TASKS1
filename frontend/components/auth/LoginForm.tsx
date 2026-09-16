@@ -6,6 +6,11 @@ import {
 
 import { motion } from "framer-motion";
 
+import {
+  Eye,
+  EyeOff,
+} from "lucide-react";
+
 import Link from "next/link";
 
 import {
@@ -71,6 +76,11 @@ export default function LoginForm() {
     serverError,
     setServerError,
   ] = useState("");
+
+  const [
+    showPassword,
+    setShowPassword,
+  ] = useState(false);
 
   const {
     register,
@@ -190,18 +200,49 @@ return (
             Password
           </label>
         </div>
+        <div className="relative">
+          <Input
+            id="login-password"
+            {...register("password")}
+            type={
+              showPassword
+                ? "text"
+                : "password"
+            }
+            autoComplete="current-password"
+            placeholder="Enter your password"
+            aria-invalid={
+              Boolean(errors.password)
+            }
+            className="h-12 pr-12"
+          />
 
-        <Input
-          id="login-password"
-          {...register("password")}
-          type="password"
-          autoComplete="current-password"
-          placeholder="Enter your password"
-          aria-invalid={
-            Boolean(errors.password)
-          }
-          className="h-12"
-        />
+          <button
+            type="button"
+            onClick={() =>
+              setShowPassword(
+                (value) => !value
+              )
+            }
+            aria-label={
+              showPassword
+                ? "Hide password"
+                : "Show password"
+            }
+            title={
+              showPassword
+                ? "Hide password"
+                : "Show password"
+            }
+            className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-lg text-[rgb(var(--muted))] transition hover:bg-[rgb(var(--surface-muted))] hover:text-[rgb(var(--foreground))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--primary))]"
+          >
+            {showPassword ? (
+              <EyeOff size={18} />
+            ) : (
+              <Eye size={18} />
+            )}
+          </button>
+        </div>
 
         {errors.password && (
           <p className="text-xs text-[rgb(var(--danger))]">
@@ -239,7 +280,7 @@ return (
       >
         {isSubmitting
           ? "Signing in..."
-          : "Sign in to ProjectFlow"}
+          : "Sign in to WorkOrbit"}
       </Button>
     </form>
 
