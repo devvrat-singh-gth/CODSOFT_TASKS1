@@ -377,21 +377,23 @@ export default function Navbar() {
         <div className="container-shell flex h-16 items-center justify-between">
           {/* Logo */}
 
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-            onClick={() =>
-              setMobileOpen(false)
-            }
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[rgb(var(--primary))] text-sm font-bold text-[rgb(var(--primary-foreground))]">
-              P
-            </span>
+<Link
+  href="/"
+  className="group flex items-center gap-2.5"
+  onClick={() =>
+    setMobileOpen(false)
+  }
+>
+  <img
+    src="/workorbit-logo.svg"
+    alt="WorkOrbit"
+    className="h-10 w-10 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)] transition-all duration-200 group-hover:drop-shadow-[0_0_18px_rgb(var(--primary)/0.65)]"
+  />
 
-            <span className="text-lg font-semibold tracking-tight">
-              WorkOrbit
-            </span>
-          </Link>
+  <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-lg font-bold tracking-tight text-transparent transition-all duration-200 group-hover:drop-shadow-[0_0_10px_rgb(var(--primary)/0.18)]">
+    WorkOrbit
+  </span>
+</Link>
 
           {/* Desktop navigation */}
 
@@ -408,8 +410,7 @@ export default function Navbar() {
                           link.id
                         )
                       }
-                      className="text-sm text-[rgb(var(--muted))] transition-colors hover:text-[rgb(var(--foreground))]"
-                    >
+className="rounded-lg px-2.5 py-2 text-sm text-[rgb(var(--muted))] transition-all duration-200 hover:bg-[rgb(var(--primary)/0.06)] hover:text-[rgb(var(--foreground))] hover:shadow-[0_0_16px_rgb(var(--primary)/0.08)]"                    >
                       {link.label}
                     </button>
                   )
@@ -450,42 +451,42 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="rounded-xl px-4 py-2.5 text-sm text-[rgb(var(--muted))] transition-colors hover:text-[rgb(var(--foreground))]"
-                >
+className="rounded-xl border border-transparent px-4 py-2.5 text-sm text-[rgb(var(--muted))] transition-all duration-200 hover:border-[rgb(var(--primary)/0.16)] hover:bg-[rgb(var(--primary)/0.05)] hover:text-[rgb(var(--foreground))] hover:shadow-[0_0_16px_rgb(var(--primary)/0.08)]"                >
                   Sign in
                 </Link>
 
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[rgb(var(--primary))] px-4 py-2.5 text-sm font-medium text-[rgb(var(--primary-foreground))] transition hover:brightness-110"
-                >
+className="inline-flex items-center gap-2 rounded-xl bg-[rgb(var(--primary))] px-4 py-2.5 text-sm font-semibold text-[rgb(var(--primary-foreground))] shadow-[0_0_18px_rgb(var(--primary)/0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_26px_rgb(var(--primary)/0.38)]"                >
                   Get started
                   <ArrowRight size={15} />
                 </Link>
               </>
             ) : (
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-3 py-2 text-sm transition-colors hover:bg-[rgb(var(--surface-muted))]"
-              >
-                {user?.avatarUrl ? (
-                  <img
-                    src={user.avatarUrl}
-                    alt=""
-                    className="h-7 w-7 rounded-full object-cover"
-                  />
-                ) : (
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[rgb(var(--primary)/0.15)] text-xs font-semibold text-[rgb(var(--primary))]">
-                    {user?.name
-                      ?.slice(0, 2)
-                      .toUpperCase()}
-                  </span>
-                )}
+<Link
+  href="/dashboard"
+  className="group flex items-center gap-2.5 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-3 py-2 text-sm transition-all duration-200 hover:border-[rgb(var(--primary)/0.2)] hover:bg-[rgb(var(--surface-muted))] hover:shadow-[0_0_18px_rgb(var(--primary)/0.10)]"
+>
+  <span className="rounded-full bg-gradient-to-br from-sky-400 via-[rgb(var(--primary))] to-violet-500 p-[2px] shadow-[0_0_14px_rgb(var(--primary)/0.42)] transition-all duration-200 group-hover:shadow-[0_0_20px_rgb(var(--primary)/0.58)]">
+    {user?.avatarUrl ? (
+      <img
+        src={user.avatarUrl}
+        alt=""
+        className="h-7 w-7 rounded-full object-cover"
+      />
+    ) : (
+      <span className="grid h-7 w-7 place-items-center rounded-full bg-[rgb(var(--surface))] text-xs font-semibold text-[rgb(var(--primary))]">
+        {user?.name
+          ?.slice(0, 2)
+          .toUpperCase()}
+      </span>
+    )}
+  </span>
 
-                <span className="max-w-24 truncate">
-                  {user?.name}
-                </span>
-              </Link>
+  <span className="max-w-24 truncate font-medium">
+    {user?.name}
+  </span>
+</Link>
             )}
           </div>
 
@@ -507,8 +508,7 @@ export default function Navbar() {
                   !value
               )
             }
-            className="grid h-10 w-10 place-items-center rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] transition hover:bg-[rgb(var(--surface-muted))] md:hidden"
-          >
+className="grid h-10 w-10 place-items-center rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] transition-all duration-200 hover:border-[rgb(var(--primary)/0.22)] hover:bg-[rgb(var(--surface-muted))] hover:shadow-[0_0_18px_rgb(var(--primary)/0.12)] md:hidden"          >
             {mobileOpen ? (
               <X size={20} />
             ) : (
@@ -558,8 +558,7 @@ export default function Navbar() {
                               link.id
                             )
                           }
-                          className="block w-full rounded-xl px-3 py-3 text-left text-sm text-[rgb(var(--muted))] transition-colors hover:bg-[rgb(var(--surface-muted))] hover:text-[rgb(var(--foreground))]"
-                        >
+className="block w-full rounded-xl border border-transparent px-3 py-3 text-left text-sm text-[rgb(var(--muted))] transition-all duration-200 hover:border-[rgb(var(--primary)/0.16)] hover:bg-[rgb(var(--primary)/0.05)] hover:text-[rgb(var(--foreground))] hover:shadow-[0_0_16px_rgb(var(--primary)/0.08)]"                        >
                           {link.label}
                         </button>
                       )
@@ -572,8 +571,7 @@ export default function Navbar() {
                           false
                         )
                       }
-                      className="block rounded-xl px-3 py-3 text-sm text-[rgb(var(--muted))] transition-colors hover:bg-[rgb(var(--surface-muted))] hover:text-[rgb(var(--foreground))]"
-                    >
+className="block rounded-xl border border-transparent px-3 py-3 text-sm text-[rgb(var(--muted))] transition-all duration-200 hover:border-[rgb(var(--primary)/0.16)] hover:bg-[rgb(var(--primary)/0.05)] hover:text-[rgb(var(--foreground))] hover:shadow-[0_0_16px_rgb(var(--primary)/0.08)]"                    >
                       Sign in
                     </Link>
 
