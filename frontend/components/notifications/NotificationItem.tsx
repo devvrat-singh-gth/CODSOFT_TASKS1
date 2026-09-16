@@ -35,7 +35,6 @@ function getNotificationIcon(
   type: Notification["type"]
 ) {
   switch (type) {
-
     case "TASK_CREATED":
       return <Plus size={16} />;
 
