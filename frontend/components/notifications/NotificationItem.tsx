@@ -35,20 +35,6 @@ function getNotificationIcon(
   type: Notification["type"]
 ) {
   switch (type) {
-    case "PROJECT_CREATED":
-      return (
-        <FolderKanban size={16} />
-      );
-
-    case "PROJECT_UPDATED":
-      return (
-        <FolderKanban size={16} />
-      );
-
-    case "PROJECT_DELETED":
-      return (
-        <FolderKanban size={16} />
-      );
 
     case "TASK_CREATED":
       return <Plus size={16} />;
