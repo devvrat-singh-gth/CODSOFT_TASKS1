@@ -575,20 +575,6 @@ className="block rounded-xl border border-transparent px-3 py-3 text-sm text-[rg
                       Sign in
                     </Link>
 
-                    <Link
-                      href="/register"
-                      onClick={() =>
-                        setMobileOpen(
-                          false
-                        )
-                      }
-                      className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[rgb(var(--primary))] px-4 py-3 text-sm font-medium text-[rgb(var(--primary-foreground))]"
-                    >
-                      Get started
-                      <ArrowRight
-                        size={15}
-                      />
-                    </Link>
                   </div>
                 ) : (
                   <div className="space-y-1">
