@@ -266,7 +266,6 @@ export default function AuthShell({
     WorkOrbit
   </span>
 </Link>
-
                 <div className="ml-auto">
                   <ThemeToggle />
                 </div>
