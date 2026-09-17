@@ -252,18 +252,20 @@ export default function AuthShell({
               {/* Top bar */}
 
               <div className="flex items-center justify-between border-b px-5 py-4 sm:px-8">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 lg:hidden"
-                >
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-[rgb(var(--primary))] text-xs font-bold text-[rgb(var(--primary-foreground))]">
-                    P
-                  </span>
+             <Link
+  href="/"
+  className="group flex items-center gap-2.5 lg:hidden"
+>
+  <img
+    src="/workorbit-logo.svg"
+    alt="WorkOrbit"
+    className="h-10 w-10 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)] transition-all duration-200 group-hover:drop-shadow-[0_0_18px_rgb(var(--primary)/0.65)]"
+  />
 
-                  <span className="font-semibold">
-                    WorkOrbit
-                  </span>
-                </Link>
+  <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-lg font-bold tracking-tight text-transparent">
+    WorkOrbit
+  </span>
+</Link>
 
                 <div className="ml-auto">
                   <ThemeToggle />
