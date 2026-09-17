@@ -126,13 +126,16 @@ export default function AuthShell({
                   href="/"
                   className="inline-flex items-center gap-2"
                 >
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-[rgb(var(--primary))] text-sm font-bold text-[rgb(var(--primary-foreground))] shadow-lg shadow-[rgb(var(--primary)/0.18)]">
-                    P
-                  </span>
-
-                  <span className="text-lg font-semibold tracking-tight">
-                    WorkOrbit
-                  </span>
+          <>
+          <img
+            src="/workorbit-logo.svg"
+            alt=""
+            className="h-12 w-12 shrink-0 drop-shadow-[0_0_12px_rgb(var(--primary)/0.45)]"
+          />
+            <span className="bg-gradient-to-r from-[rgb(var(--foreground))] via-[rgb(var(--primary))] to-[rgb(var(--accent))] bg-clip-text text-base font-bold text-transparent">
+              WorkOrbit
+            </span>
+          </>
                 </Link>
               </div>
 
