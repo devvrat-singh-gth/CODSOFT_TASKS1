@@ -207,7 +207,7 @@ export default function DashboardPage() {
           />
         </Reveal>
 
-        <div className="grid gap-6 xl:grid-cols-[1.6fr_0.7fr]">
+        <div className="grid gap-6 xl:grid-cols-[1fr_0.75fr]">
           <Reveal delay={0.08}>
             <RecentProjects
   projects={projects}

@@ -135,7 +135,7 @@ useEffect(() => {
         </div>
       )}
 
-      <div className="px-4 py-5">
+     <div className="px-4 py-6 border-b border-[rgb(var(--border))]">
         {!mobile && (
           <Link
             href="/dashboard"
@@ -200,12 +200,12 @@ useEffect(() => {
             }
           )}
         </nav>
-        <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-4">
+       <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5">
   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
     Workspace Pulse
   </p>
 
-  <div className="mt-4 flex h-10 items-end gap-1">
+  <div className="mt-4 flex h-20 items-end gap-1">
     {[18, 30, 22, 36, 14, 28].map(
       (height, index) => (
         <motion.div
@@ -224,7 +224,22 @@ useEffect(() => {
             repeat: Infinity,
             repeatType: "mirror",
           }}
-          className="w-2 rounded-full bg-[rgb(var(--primary)/0.7)]"
+          className="w-2 rounded-full bg-gradient-to-t from-violet-400 via-indigo-400 to-sky-400 animate={{
+  height: [
+    height,
+    height + 18,
+    height - 8,
+    height + 12,
+    height,
+  ],
+  opacity: [
+    0.5,
+    1,
+    0.7,
+    1,
+    0.5,
+  ],
+}}"
           style={{
             height,
           }}
@@ -232,7 +247,27 @@ useEffect(() => {
       )
     )}
   </div>
+<div className="mt-4 hidden lg:grid grid-cols-2 gap-3">
+  <div className="rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.35)] p-3">
+    <p className="text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--muted))]">
+      Active Projects
+    </p>
 
+    <p className="mt-2 text-2xl font-semibold">
+      5
+    </p>
+  </div>
+
+  <div className="rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.35)] p-3">
+    <p className="text-[10px] uppercase tracking-[0.16em] text-[rgb(var(--muted))]">
+      Active Tasks
+    </p>
+
+    <p className="mt-2 text-2xl font-semibold">
+      4
+    </p>
+  </div>
+</div>
   <p className="mt-3 text-xs text-[rgb(var(--muted))]">
     Focus mode active
   </p>
