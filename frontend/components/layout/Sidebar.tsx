@@ -200,6 +200,43 @@ useEffect(() => {
             }
           )}
         </nav>
+        <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-4">
+  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
+    Workspace Pulse
+  </p>
+
+  <div className="mt-4 flex h-10 items-end gap-1">
+    {[18, 30, 22, 36, 14, 28].map(
+      (height, index) => (
+        <motion.div
+          key={index}
+          animate={{
+            height: [
+              height,
+              height + 12,
+              height,
+            ],
+          }}
+          transition={{
+            duration:
+              1.8 +
+              index * 0.3,
+            repeat: Infinity,
+            repeatType: "mirror",
+          }}
+          className="w-2 rounded-full bg-[rgb(var(--primary)/0.7)]"
+          style={{
+            height,
+          }}
+        />
+      )
+    )}
+  </div>
+
+  <p className="mt-3 text-xs text-[rgb(var(--muted))]">
+    Focus mode active
+  </p>
+</div>
       </div>
 
       {/* PROFILE CARD */}

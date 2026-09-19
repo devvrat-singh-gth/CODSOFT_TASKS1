@@ -23,11 +23,11 @@ export default function AppShell({
   ] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[rgb(var(--background))]">
-      <div className="flex min-h-screen">
+<div className="h-screen overflow-hidden bg-[rgb(var(--background))]">
+  <div className="flex h-screen">
         <Sidebar />
 
-        <div className="min-w-0 flex-1">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <Topbar
             onMenu={() =>
               setMobileOpen(true)
