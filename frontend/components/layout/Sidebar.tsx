@@ -135,8 +135,8 @@ useEffect(() => {
         </div>
       )}
 
-       <div className="px-4 py-6 border-b border-[rgb(var(--border))]">
-        {!mobile && (
+<div className="flex flex-1 flex-col px-4 py-6">
+          {!mobile && (
           <Link
             href="/dashboard"
             className="mb-7 flex items-center gap-2 px-2 font-semibold"
@@ -200,7 +200,7 @@ useEffect(() => {
             }
           )}
         </nav>
-       <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5">
+       <div className="mt-20 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5">
   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
     Workspace Pulse
   </p>
@@ -208,42 +208,32 @@ useEffect(() => {
   <div className="mt-4 flex h-20 items-end gap-1">
     {[18, 30, 22, 36, 14, 28].map(
       (height, index) => (
-        <motion.div
-          key={index}
-          animate={{
-            height: [
-              height,
-              height + 12,
-              height,
-            ],
-          }}
-          transition={{
-            duration:
-              1.8 +
-              index * 0.3,
-            repeat: Infinity,
-            repeatType: "mirror",
-          }}
-          className="w-2 rounded-full bg-gradient-to-t from-violet-400 via-indigo-400 to-sky-400 animate={{
-  height: [
-    height,
-    height + 18,
-    height - 8,
-    height + 12,
-    height,
-  ],
-  opacity: [
-    0.5,
-    1,
-    0.7,
-    1,
-    0.5,
-  ],
-}}"
-          style={{
-            height,
-          }}
-        />
+       <motion.div
+  key={index}
+  animate={{
+    height: [
+      height,
+      height + 18,
+      height - 8,
+      height + 12,
+      height,
+    ],
+    opacity: [
+      0.5,
+      1,
+      0.7,
+      1,
+      0.5,
+    ],
+  }}
+  transition={{
+    duration: 2 + index * 0.3,
+    repeat: Infinity,
+    repeatType: "mirror",
+  }}
+  className="w-2 rounded-full bg-gradient-to-t from-violet-400 via-indigo-400 to-sky-400"
+  style={{ height }}
+/>
       )
     )}
   </div>
@@ -277,7 +267,7 @@ useEffect(() => {
       {/* PROFILE CARD */}
 <div
   ref={profileRef}
-  className="relative mt-auto border-t border-[rgb(var(--border))] p-4"
+  className="relative mt-auto p-4"
 >
   <button
     type="button"
