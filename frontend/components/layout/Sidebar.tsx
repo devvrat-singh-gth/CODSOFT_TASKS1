@@ -100,12 +100,12 @@ useEffect(() => {
   };
 }, []);
   return (
-    <aside
- className={cn(
-  "sticky top-0 flex h-screen w-64 flex-col border-r border-[rgb(var(--border))] bg-[rgb(var(--surface))]",
-  mobile ? "w-full" : "hidden lg:flex"
-)}
-    >
+<aside
+  className={cn(
+    "sticky top-0 z-[60] flex h-screen w-64 flex-col border-r border-[rgb(var(--border))] bg-[rgb(var(--surface))]",
+    mobile ? "w-full" : "hidden lg:flex"
+  )}
+>
       {mobile && (
         <div className="flex h-16 items-center justify-between border-b border-[rgb(var(--border))] px-5">
           <Link
@@ -264,18 +264,18 @@ transition={{
   duration:
     EXIT_DURATION / 1000,
 }}
-       className="
+className="
 absolute
 left-[calc(100%+12px)]
 bottom-4
+z-[100]
 w-52
-z-50
 overflow-hidden
 rounded-xl
 border
 border-[rgb(var(--border))]
 bg-[rgb(var(--surface))]
-shadow-2xl
+shadow-[0_12px_40px_rgb(0_0_0/0.22)]
 "
       >
 <button
