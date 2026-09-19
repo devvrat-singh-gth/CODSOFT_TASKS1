@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import {
   ArrowRight,
   FolderKanban,
@@ -17,17 +16,30 @@ const statusLabel = (
   status === "IN_PROGRESS"
     ? "In progress"
     : status === "COMPLETED"
-      ? "Completed"
-      : "Planning";
+    ? "Completed"
+    : "Planning";
 
 export default function RecentProjects({
   projects,
 }: {
   projects: Project[];
 }) {
+  const dashboardProjects = [
+    ...projects.filter(
+      (project) =>
+        project.status ===
+        "IN_PROGRESS"
+    ),
+    ...projects.filter(
+      (project) =>
+        project.status !==
+        "IN_PROGRESS"
+    ),
+  ].slice(0, 3);
+
   return (
-<section className="h-full rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-5 sm:p-6">
-        <div className="flex items-center justify-between gap-3">
+    <section className="h-full rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-5 sm:p-6">
+      <div className="flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
             Projects
@@ -47,9 +59,9 @@ export default function RecentProjects({
         </Link>
       </div>
 
-      <div className="mt-5 space-y-3">
-        {projects.length ? (
-          projects.map(
+      <div className="mt-5 flex flex-col gap-3">
+        {dashboardProjects.length ? (
+          dashboardProjects.map(
             (project) => {
               const tasks =
                 project.tasks ?? [];
@@ -82,7 +94,7 @@ export default function RecentProjects({
                     </span>
 
                     <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center justify-between gap-2">
                         <p className="truncate font-medium">
                           {project.title}
                         </p>

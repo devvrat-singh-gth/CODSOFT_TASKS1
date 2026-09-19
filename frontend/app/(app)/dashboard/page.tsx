@@ -161,8 +161,8 @@ export default function DashboardPage() {
               />
             ))}
           </div>
-          <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-            <Skeleton className="h-72 rounded-3xl" />
+<div className="grid items-stretch gap-6 xl:grid-cols-[1.6fr_0.7fr]">
+              <Skeleton className="h-72 rounded-3xl" />
             <Skeleton className="h-72 rounded-3xl" />
           </div>
         </div>
