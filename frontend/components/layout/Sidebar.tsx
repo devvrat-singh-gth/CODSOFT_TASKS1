@@ -201,39 +201,39 @@ useEffect(() => {
           )}
         </nav>
        <div className="mt-20 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5">
-  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
-    Workspace Pulse
-  </p>
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
+        Workspace Pulse
+      </p>
 
-  <div className="mt-4 flex h-20 items-end gap-1">
-    {[18, 30, 22, 36, 14, 28].map(
-      (height, index) => (
-       <motion.div
-  key={index}
-  animate={{
-    height: [
-      height,
-      height + 18,
-      height - 8,
-      height + 12,
-      height,
-    ],
-    opacity: [
-      0.5,
-      1,
-      0.7,
-      1,
-      0.5,
-    ],
-  }}
-  transition={{
-    duration: 2 + index * 0.3,
-    repeat: Infinity,
-    repeatType: "mirror",
-  }}
-  className="w-2 rounded-full bg-gradient-to-t from-violet-400 via-indigo-400 to-sky-400"
-  style={{ height }}
-/>
+      <div className="mt-4 flex h-20 items-end gap-1">
+        {[18, 30, 22, 36, 14, 28].map(
+          (height, index) => (
+          <motion.div
+      key={index}
+      animate={{
+        height: [
+          height,
+          height + 18,
+          height - 8,
+          height + 12,
+          height,
+        ],
+        opacity: [
+          0.5,
+          1,
+          0.7,
+          1,
+          0.5,
+        ],
+      }}
+      transition={{
+        duration: 2 + index * 0.3,
+        repeat: Infinity,
+        repeatType: "mirror",
+      }}
+      className="w-2 rounded-full bg-gradient-to-t from-violet-400 via-indigo-400 to-sky-400"
+      style={{ height }}
+    />
       )
     )}
   </div>
