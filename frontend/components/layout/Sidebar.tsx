@@ -200,7 +200,14 @@ useEffect(() => {
             }
           )}
         </nav>
-       <div className="mt-44 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5">
+     <div
+  className={cn(
+    "rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface-muted)/0.45)] p-5",
+    mobile
+      ? "mt-8"
+      : "mt-auto mb-6"
+  )}
+>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
         Workspace Pulse
       </p>
@@ -265,9 +272,10 @@ useEffect(() => {
       </div>
 
       {/* PROFILE CARD */}
+{!mobile && (
 <div
   ref={profileRef}
-  className="relative mt-auto p-4"
+  className="relative p-4"
 >
   <button
     type="button"
@@ -359,6 +367,7 @@ onClick={handleLogoutClick}
     )}
   </AnimatePresence>
 </div>
+)}
     </aside>
   );
 }
