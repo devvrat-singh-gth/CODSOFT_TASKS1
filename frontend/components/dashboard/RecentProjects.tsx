@@ -26,8 +26,8 @@ export default function RecentProjects({
   projects: Project[];
 }) {
   return (
-    <section className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-5 sm:p-6">
-      <div className="flex items-center justify-between gap-3">
+<section className="h-full rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
             Projects
