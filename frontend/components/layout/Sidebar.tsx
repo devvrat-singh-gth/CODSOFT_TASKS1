@@ -135,7 +135,7 @@ useEffect(() => {
         </div>
       )}
 
-     <div className="px-4 py-6 border-b border-[rgb(var(--border))]">
+       <div className="px-4 py-6 border-b border-[rgb(var(--border))]">
         {!mobile && (
           <Link
             href="/dashboard"
