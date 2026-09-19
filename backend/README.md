@@ -36,6 +36,7 @@ Neon PostgreSQL
 DATABASE_URL=
 JWT_SECRET=
 PORT=5000
+CLIENT_URL=
 ```
 
 ## Installation
