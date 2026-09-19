@@ -207,13 +207,11 @@ export default function DashboardPage() {
           />
         </Reveal>
 
-        <div className="grid gap-6 xl:grid-cols-[1.25fr_0.75fr]">
+        <div className="grid gap-6 xl:grid-cols-[1.6fr_0.7fr]">
           <Reveal delay={0.08}>
-            <ProjectOverview
-              projects={
-                projectProgress
-              }
-            />
+            <RecentProjects
+  projects={projects}
+/>
           </Reveal>
 
           <Reveal delay={0.12}>
@@ -244,12 +242,6 @@ export default function DashboardPage() {
             />
           </Reveal>
         </div>
-
-        <Reveal delay={0.24}>
-          <RecentProjects
-            projects={projects}
-          />
-        </Reveal>
       </div>
     </PageContainer>
   );
