@@ -35,7 +35,7 @@ export default function ProductivityCard({
           </span>
         </div>
 
-        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--muted))]">
           Completion rate
         </p>
 
@@ -49,7 +49,7 @@ export default function ProductivityCard({
             : "All current tasks are complete."}
         </p>
 
-        <div className="mt-5 h-2 overflow-hidden rounded-full bg-[rgb(var(--surface-muted))]">
+        <div className="mt-4 h-2 overflow-hidden rounded-full bg-[rgb(var(--surface-muted))]">
           <div
             className="h-full rounded-full bg-[rgb(var(--primary))] transition-[width] duration-700 ease-out"
             style={{

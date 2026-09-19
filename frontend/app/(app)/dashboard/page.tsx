@@ -196,7 +196,7 @@ export default function DashboardPage() {
 
   return (
     <PageContainer>
-      <div className="space-y-7">
+     <div className="space-y-8 xl:space-y-10">
         <Reveal>
           <DashboardHeader />
         </Reveal>

@@ -51,13 +51,45 @@ export default function DashboardHeader() {
           </p>
         </div>
 
-        <Link
-          href="/projects"
-          className="inline-flex w-fit items-center gap-2 rounded-xl bg-[rgb(var(--primary))] px-4 py-3 text-sm font-medium text-[rgb(var(--primary-foreground))] transition hover:brightness-110"
-        >
-          View projects
-          <ArrowRight size={16} />
-        </Link>
+<div className="flex items-center gap-4 self-start lg:self-auto">
+  <div className="hidden lg:block text-right">
+    <p className="text-xs uppercase tracking-[0.16em] text-[rgb(var(--muted))]">
+      Workspace Status
+    </p>
+
+    <div className="mt-1 flex items-center justify-end gap-2">
+      <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+
+      <span className="text-sm font-medium">
+        Everything synced
+      </span>
+    </div>
+  </div>
+
+  <Link
+    href="/projects"
+    className="
+      inline-flex
+      items-center
+      gap-2
+      rounded-2xl
+      bg-[rgb(var(--primary))]
+      px-5
+      py-3
+      text-sm
+      font-semibold
+      text-[rgb(var(--primary-foreground))]
+      shadow-[0_10px_30px_rgb(var(--primary)/0.25)]
+      transition-all
+      duration-200
+      hover:-translate-y-0.5
+      hover:brightness-110
+    "
+  >
+    View Projects
+    <ArrowRight size={16} />
+  </Link>
+</div>
       </div>
     </section>
   );
