@@ -1,33 +1,52 @@
-# E-Commerce Project
+# AuraBazaar — E-Commerce Website
 
-```
+A full-stack e-commerce website built with Next.js, Express, TypeScript, MongoDB, and Cloudinary.
+
+## Tech Stack
+
+### Frontend
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Zustand
+- Axios
+
+### Backend
+- Node.js
+- Express
+- TypeScript
+- MongoDB + Mongoose
+- JWT Authentication
+- Cloudinary
+- Razorpay integration prepared for future use
+
+## Features
+
+- Product browsing
+- Product search
+- Product filtering and sorting
+- Category browsing
+- Product details
+- Shopping cart
+- Wishlist
+- User authentication
+- Checkout
+- Cash on Delivery
+- Order management
+- Product reviews
+- Admin dashboard
+- Product and category management
+- User management
+- Image uploads through Cloudinary
+- Responsive light/dark theme
+
+## Project Structure
+
+```text
 Ecommerce/
-├── backend/    Express + TypeScript + MongoDB + Cloudinary + Razorpay
-├── frontend/   Next.js (App Router) + TypeScript + Tailwind
+├── backend/
+│   └── Express + TypeScript + MongoDB API
+├── frontend/
+│   └── Next.js + TypeScript + Tailwind frontend
 └── README.md
-```
-
-## Quick start
-
-1. **Backend**
-   ```bash
-   cd backend
-   npm install
-   cp .env.example .env    # fill MONGO_URI + JWT_SECRET at minimum
-   npm run seed              # ~150 demo products, categories, admin + test user
-   npm run dev                # http://localhost:5000/api
-   ```
-2. **Frontend**
-   ```bash
-   cd frontend
-   npm install
-   cp .env.example .env.local
-   npm run dev                # http://localhost:3000
-   ```
-
-Demo logins from the seed script:
-- Admin: `admin@example.com` / `Admin@12345`
-- Customer: `customer@example.com` / `Customer@12345`
-
-See `backend/README.md` and `frontend/README.md` for the architecture notes
-specific to each half.
