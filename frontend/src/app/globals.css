@@ -1,0 +1,607 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   AURABAZAAR
+   Vibrant Glass Commerce System
+   Light: Blue / Violet / Cyan
+   Dark: Emerald / Jade / Mint
+   ========================================================= */
+
+:root {
+  /* =======================================================
+     LIGHT THEME
+     ======================================================= */
+
+  --background: 220 45% 97%;
+  --foreground: 224 35% 12%;
+
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+
+  --muted: 220 32% 92%;
+  --muted-foreground: 222 15% 42%;
+
+  --border: 220 25% 86%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 224 35% 12%;
+
+  --accent: 247 83% 65%;
+  --accent-foreground: 0 0% 100%;
+
+  --ring: 221 83% 53%;
+
+  /* Blue → Violet → Cyan */
+  --gradient-start: 221 83% 53%;
+  --gradient-middle: 244 78% 62%;
+  --gradient-end: 190 85% 55%;
+
+  /* Ambient light */
+  --glow-primary: 221 90% 65%;
+  --glow-secondary: 255 85% 70%;
+  --glow-tertiary: 190 90% 65%;
+}
+
+.dark {
+  /* =======================================================
+     DARK THEME
+     Emerald → Jade → Mint
+     ======================================================= */
+  --background: 220 15% 8%;
+  --card: 220 12% 11%;
+  --foreground: 155 25% 96%;
+
+  --primary: 158 72% 52%;
+  --primary-foreground: 165 35% 7%;
+
+  --muted: 165 22% 13%;
+  --muted-foreground: 155 12% 66%;
+
+  --border: 165 18% 22%;
+
+  --card: 165 25% 11%;
+  --card-foreground: 155 25% 96%;
+
+  --accent: 157 68% 58%;
+  --accent-foreground: 165 35% 7%;
+
+  --ring: 158 72% 52%;
+
+  /* Emerald → Jade → Mint */
+  --gradient-start: 158 72% 48%;
+  --gradient-middle: 170 68% 48%;
+  --gradient-end: 145 70% 58%;
+
+  /* Ambient dark glow */
+  --glow-primary: 158 85% 48%;
+  --glow-secondary: 174 75% 48%;
+  --glow-tertiary: 140 80% 52%;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+  background: hsl(var(--background));
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 8% 8%,
+      hsl(var(--glow-primary) / 0.09),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 18%,
+      hsl(var(--glow-secondary) / 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      hsl(var(--glow-tertiary) / 0.06),
+      transparent 30%
+    ),
+    hsl(var(--background));
+
+  color: hsl(var(--foreground));
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: hsl(var(--primary) / 0.22);
+  color: hsl(var(--foreground));
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+  user-select: none;
+}
+
+/* =========================================================
+   VIBRANT GRADIENTS
+   ========================================================= */
+
+@layer utilities {
+  .gradient-brand {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-middle)) 52%,
+      hsl(var(--gradient-end))
+    );
+  }
+
+  .gradient-brand-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-middle)) 52%,
+      hsl(var(--gradient-end))
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    padding: 1px;
+    border-radius: inherit;
+
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start) / 0.5),
+      hsl(var(--gradient-middle) / 0.18),
+      hsl(var(--gradient-end) / 0.42)
+    );
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
+  }
+
+  /* =======================================================
+     GLASS
+     ======================================================= */
+
+  .glass {
+    background: hsl(var(--card) / 0.72);
+
+    border: 1px solid hsl(var(--foreground) / 0.08);
+
+    box-shadow:
+      0 12px 40px hsl(220 40% 20% / 0.07),
+      inset 0 1px 0 hsl(0 0% 100% / 0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .glass-strong {
+    background: hsl(var(--card) / 0.84);
+
+    border: 1px solid hsl(var(--foreground) / 0.09);
+
+    box-shadow:
+      0 18px 55px hsl(220 40% 20% / 0.09),
+      inset 0 1px 0 hsl(0 0% 100% / 0.4);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* =======================================================
+     AMBIENT GLOW
+     ======================================================= */
+
+  .ambient-glow {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .ambient-glow::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    top: -120px;
+    right: -100px;
+
+    background: radial-gradient(
+      circle,
+      hsl(var(--glow-primary) / 0.18),
+      transparent 68%
+    );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -1;
+  }
+
+  .ambient-glow::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    bottom: -120px;
+    left: -90px;
+
+    background: radial-gradient(
+      circle,
+      hsl(var(--glow-secondary) / 0.14),
+      transparent 68%
+    );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -1;
+  }
+
+  /* =======================================================
+     BRAND WORDMARK
+     ======================================================= */
+
+  .brand-accent {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-middle)) 55%,
+      hsl(var(--gradient-end))
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+  }
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--gradient-start) / 0.6),
+    hsl(var(--gradient-end) / 0.6)
+  );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--gradient-start) / 0.85),
+    hsl(var(--gradient-end) / 0.85)
+  );
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}/* =========================================================
+   RESPONSIVE DESIGN SYSTEM
+   Fluid sizing for phones → large desktop displays
+   ========================================================= */
+
+@layer utilities {
+  /* ---------- Page spacing ---------- */
+
+  .page-section {
+    padding-top: clamp(4rem, 6vw, 7rem);
+    padding-bottom: clamp(4rem, 6vw, 7rem);
+  }
+
+  .page-section-sm {
+    padding-top: clamp(3rem, 4.5vw, 5.5rem);
+    padding-bottom: clamp(3rem, 4.5vw, 5.5rem);
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero-title {
+    font-size: clamp(2.75rem, 4.6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  /* ---------- Section headings ---------- */
+
+  .section-title {
+    font-size: clamp(1.5rem, 1.8vw, 2.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .section-description {
+    font-size: clamp(0.9rem, 0.95vw, 1.05rem);
+    line-height: 1.65;
+  }
+
+  /* ---------- General text ---------- */
+
+  .fluid-heading {
+    font-size: clamp(1.25rem, 1.5vw, 1.8rem);
+  }
+
+  .fluid-body {
+    font-size: clamp(0.875rem, 0.9vw, 1rem);
+  }
+
+  /* ---------- Buttons ---------- */
+
+  .fluid-button {
+    min-height: clamp(2.75rem, 3vw, 3.35rem);
+    padding-inline: clamp(1rem, 1.4vw, 1.6rem);
+    font-size: clamp(0.875rem, 0.9vw, 1rem);
+  }
+
+  /* ---------- Product cards ---------- */
+
+  .product-title {
+    font-size: clamp(0.875rem, 0.95vw, 1.08rem);
+    line-height: 1.35;
+  }
+
+  .product-price {
+    font-size: clamp(0.95rem, 1vw, 1.18rem);
+  }
+
+  /* ---------- Small labels ---------- */
+
+  .fluid-label {
+    font-size: clamp(0.7rem, 0.72vw, 0.8rem);
+  }
+
+  /* ---------- Large-screen card radius ---------- */
+
+  .fluid-radius {
+    border-radius: clamp(1rem, 1.5vw, 2rem);
+  }
+}/* =========================================================
+   NAVBAR
+   Responsive glass commerce navigation
+   ========================================================= */
+
+@layer components {
+  .navbar-shell {
+    transition:
+      background 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  /* -------------------------------------------------------
+     LIGHT THEME NAVBAR
+     ------------------------------------------------------- */
+
+  :root .navbar-shell {
+    background:
+      linear-gradient(
+        110deg,
+        hsl(220 80% 97% / 0.94),
+        hsl(235 75% 98% / 0.90) 48%,
+        hsl(195 80% 97% / 0.94)
+      );
+  }
+
+  /* -------------------------------------------------------
+     DARK THEME NAVBAR
+     ------------------------------------------------------- */
+
+  .dark .navbar-shell {
+    background:
+      linear-gradient(
+        110deg,
+        hsl(var(--background) / 0.94),
+        hsl(165 20% 9% / 0.90) 52%,
+        hsl(var(--background) / 0.94)
+      );
+  }
+
+  /* -------------------------------------------------------
+     DESKTOP SEARCH
+     ------------------------------------------------------- */
+
+  .navbar-search-form-desktop {
+    width: clamp(18rem, 24vw, 31rem);
+  }
+
+  .navbar-search {
+    width: 100%;
+  }
+
+  .navbar-search input {
+    color-scheme: light dark;
+  }
+
+  /* -------------------------------------------------------
+     NORMAL SEARCH STATE
+     Follows the current theme.
+     ------------------------------------------------------- */
+
+  :root .navbar-search input {
+    background: hsl(var(--card) / 0.55);
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border) / 0.75);
+  }
+
+  .dark .navbar-search input {
+    background: hsl(var(--card) / 0.48);
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border) / 0.72);
+  }
+
+  /* -------------------------------------------------------
+     FOCUS / WRITING STATE
+     
+     ONLY when the user actually engages with the input:
+     white background + black text.
+     ------------------------------------------------------- */
+
+  .navbar-search input:focus {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border-color: rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 0 24px rgba(255, 255, 255, 0.14);
+  }
+
+  .navbar-search input:focus::placeholder {
+    color: rgba(17, 17, 17, 0.45);
+  }
+
+  .navbar-search:focus-within svg {
+    color: rgba(17, 17, 17, 0.55);
+  }
+
+  /* No white conversion on simple hover */
+  .navbar-search input:hover:not(:focus) {
+    border-color: hsl(var(--border));
+  }
+}
+
+/* =========================================================
+   NAVBAR RESPONSIVE BEHAVIOUR
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .navbar-search-form {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .navbar-search input {
+    height: 2.5rem;
+    padding-left: 2.45rem;
+    padding-right: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .navbar-search input::placeholder {
+    font-size: 0.76rem;
+  }
+
+  .navbar-search svg {
+    left: 0.8rem;
+    height: 15px;
+    width: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-search-form-desktop {
+    flex-shrink: 1;
+  }
+
+  .navbar-search input {
+    height: 2.65rem;
+  }
+}
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
