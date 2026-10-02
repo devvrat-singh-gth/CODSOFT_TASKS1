@@ -21,7 +21,12 @@ import paymentRoutes from "./routes/paymentRoutes";
 const app = express();
 
 app.set("trust proxy", 1);
-
+app.get("/", (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "aURaBazaar API is running",
+  });
+});
 app.use(helmet());
 app.use(
   cors({
