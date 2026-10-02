@@ -586,7 +586,7 @@ Before operating as a real public store:
 
 ## Repository Layout
 
-Detailed implementation notes are available inside:
+Detailed implementation notes are available inside the repository folders:
 
 ```text
 frontend/README.md
