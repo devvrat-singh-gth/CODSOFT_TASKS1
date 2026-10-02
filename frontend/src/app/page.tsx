@@ -41,7 +41,7 @@ export default async function HomePage() {
     categoriesResult.status === "fulfilled"
       ? categoriesResult.value
       : [];
-      
+    
   const categoryProducts = await Promise.all(
     categories.slice(0, 8).map(async (category) => {
       try {
