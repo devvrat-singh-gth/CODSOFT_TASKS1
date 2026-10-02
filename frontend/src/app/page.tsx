@@ -14,7 +14,6 @@ import { FeaturedHeroCarousel } from "@/components/products/FeaturedHeroCarousel
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { getProducts } from "@/services/productService";
 import { getCategories } from "@/services/categoryService";
-
 export default async function HomePage() {
   const [productsResult, categoriesResult] =
     await Promise.allSettled([
@@ -25,6 +24,14 @@ export default async function HomePage() {
       getCategories(),
     ]);
 
+  if (productsResult.status === "rejected") {
+    console.error("HOMEPAGE FEATURED PRODUCTS ERROR:", productsResult.reason);
+  }
+
+  if (categoriesResult.status === "rejected") {
+    console.error("HOMEPAGE CATEGORIES ERROR:", categoriesResult.reason);
+  }
+
   const featured =
     productsResult.status === "fulfilled"
       ? productsResult.value.products.slice(0, 4)
@@ -34,7 +41,6 @@ export default async function HomePage() {
     categoriesResult.status === "fulfilled"
       ? categoriesResult.value
       : [];
-
   const categoryProducts = await Promise.all(
     categories.slice(0, 8).map(async (category) => {
       try {
