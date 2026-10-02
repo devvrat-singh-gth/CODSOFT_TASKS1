@@ -19,7 +19,6 @@ import adminRoutes from "./routes/adminRoutes";
 import paymentRoutes from "./routes/paymentRoutes";
 
 const app = express();
-
 app.set("trust proxy", 1);
 app.get("/", (_req, res) => {
   res.status(200).json({
