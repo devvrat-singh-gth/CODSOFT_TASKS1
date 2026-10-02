@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   AnimatePresence,
@@ -20,7 +20,7 @@ import { useProducts } from "@/hooks/useProducts";
 import { getCategories } from "@/services/categoryService";
 import { Category } from "@/types/category";
 
-export default function ProductsPage() {
+function ProductsPageContent() {
   const searchParams = useSearchParams();
 
   /*
@@ -423,5 +423,12 @@ export default function ProductsPage() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProductsPageContent />
+    </Suspense>
   );
 }

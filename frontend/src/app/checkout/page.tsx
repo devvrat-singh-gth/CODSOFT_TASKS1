@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Container } from "@/components/layout/Container";
@@ -33,7 +33,11 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("COD");
   const [placedOrderId, setPlacedOrderId] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-
+useEffect(() => {
+  if (itemCount === 0 && !placedOrderId) {
+    router.replace("/cart");
+  }
+}, [itemCount, placedOrderId, router]);
   const addressComplete = Object.values(address).every((v) => v.trim().length > 0);
 
   const handlePlaceOrder = async () => {
@@ -56,11 +60,10 @@ export default function CheckoutPage() {
       setSubmitting(false);
     }
   };
+if (itemCount === 0 && !placedOrderId) {
+  return null;
+}
 
-  if (itemCount === 0 && !placedOrderId) {
-    router.push("/cart");
-    return null;
-  }
 
   return (
     <Container className="py-10">
