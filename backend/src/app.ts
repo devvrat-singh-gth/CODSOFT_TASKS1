@@ -18,7 +18,9 @@ import userRoutes from "./routes/userRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import paymentRoutes from "./routes/paymentRoutes";
 
-const app: Application = express();
+const app = express();
+
+app.set("trust proxy", 1);
 
 app.use(helmet());
 app.use(
