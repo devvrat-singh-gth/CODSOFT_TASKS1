@@ -8,49 +8,46 @@
    Light: Blue / Violet / Cyan
    Dark: Emerald / Jade / Mint
    ========================================================= */
-
 :root {
   /* =======================================================
      LIGHT THEME
      ======================================================= */
 
-  --background: 220 45% 97%;
+  --background: 213 55% 94%;
   --foreground: 224 35% 12%;
 
-  --primary: 221 83% 53%;
+  --primary: 214 82% 48%;
   --primary-foreground: 0 0% 100%;
 
-  --muted: 220 32% 92%;
+  --muted: 213 38% 89%;
   --muted-foreground: 222 15% 42%;
 
-  --border: 220 25% 86%;
+  --border: 213 28% 82%;
 
-  --card: 0 0% 100%;
+  --card: 214 45% 98%;
   --card-foreground: 224 35% 12%;
 
-  --accent: 247 83% 65%;
+  --accent: 215 78% 58%;
   --accent-foreground: 0 0% 100%;
 
-  --ring: 221 83% 53%;
+  --ring: 214 82% 48%;
 
-  /* Blue → Violet → Cyan */
-  --gradient-start: 221 83% 53%;
-  --gradient-middle: 244 78% 62%;
-  --gradient-end: 190 85% 55%;
+  /* Deep Sky Blue → Blue → Cyan */
+  --gradient-start: 214 82% 48%;
+  --gradient-middle: 218 78% 56%;
+  --gradient-end: 195 82% 52%;
 
-  /* Ambient light */
-  --glow-primary: 221 90% 65%;
-  --glow-secondary: 255 85% 70%;
-  --glow-tertiary: 190 90% 65%;
+  /* Ambient blue atmosphere */
+  --glow-primary: 211 88% 58%;
+  --glow-secondary: 222 82% 65%;
+  --glow-tertiary: 195 88% 58%;
 }
-
 .dark {
   /* =======================================================
      DARK THEME
      Emerald → Jade → Mint
      ======================================================= */
   --background: 220 15% 8%;
-  --card: 220 12% 11%;
   --foreground: 155 25% 96%;
 
   --primary: 158 72% 52%;
@@ -91,15 +88,13 @@
 html {
   scroll-behavior: smooth;
   background: hsl(var(--background));
-}
-
-body {
+}body {
   min-height: 100vh;
 
   background:
     radial-gradient(
       circle at 8% 8%,
-      hsl(var(--glow-primary) / 0.09),
+      hsl(var(--glow-primary) / 0.10),
       transparent 28%
     ),
     radial-gradient(
@@ -220,31 +215,30 @@ img {
      GLASS
      ======================================================= */
 
-  .glass {
-    background: hsl(var(--card) / 0.72);
+.glass {
+  background: hsl(var(--card) / 0.68);
 
-    border: 1px solid hsl(var(--foreground) / 0.08);
+  border: 1px solid hsl(var(--foreground) / 0.08);
 
-    box-shadow:
-      0 12px 40px hsl(220 40% 20% / 0.07),
-      inset 0 1px 0 hsl(0 0% 100% / 0.35);
+  box-shadow:
+    0 12px 40px hsl(214 55% 30% / 0.10),
+    inset 0 1px 0 hsl(0 0% 100% / 0.38);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+ .glass-strong {
+  background: hsl(var(--card) / 0.78);
 
-  .glass-strong {
-    background: hsl(var(--card) / 0.84);
+  border: 1px solid hsl(var(--foreground) / 0.09);
 
-    border: 1px solid hsl(var(--foreground) / 0.09);
+  box-shadow:
+    0 18px 55px hsl(214 55% 30% / 0.12),
+    inset 0 1px 0 hsl(0 0% 100% / 0.42);
 
-    box-shadow:
-      0 18px 55px hsl(220 40% 20% / 0.09),
-      inset 0 1px 0 hsl(0 0% 100% / 0.4);
-
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-  }
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
 
   /* =======================================================
      AMBIENT GLOW
@@ -471,15 +465,19 @@ img {
      LIGHT THEME NAVBAR
      ------------------------------------------------------- */
 
-  :root .navbar-shell {
-    background:
-      linear-gradient(
-        110deg,
-        hsl(220 80% 97% / 0.94),
-        hsl(235 75% 98% / 0.90) 48%,
-        hsl(195 80% 97% / 0.94)
-      );
-  }
+:root .navbar-shell {
+  background:
+    linear-gradient(
+      110deg,
+      hsla(213, 68%, 54%, 0.92),
+      hsla(220, 92%, 79%, 0.88) 48%,
+      hsl(197 90% 82% / 0.92)
+    );
+
+  box-shadow:
+    0 8px 30px hsl(210 70% 45% / 0.10),
+    inset 0 1px 0 hsl(0 0% 100% / 0.30);
+}
 
   /* -------------------------------------------------------
      DARK THEME NAVBAR
@@ -535,28 +533,23 @@ img {
      white background + black text.
      ------------------------------------------------------- */
 
-  .navbar-search input:focus {
-    background: #ffffff !important;
-    color: #111111 !important;
-    border-color: rgba(255, 255, 255, 0.7);
+.navbar-search input:focus {
+  background: hsl(var(--card) / 0.78) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--primary) / 0.45);
 
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.2),
-      0 0 24px rgba(255, 255, 255, 0.14);
-  }
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.12),
+    0 0 22px hsl(var(--primary) / 0.12);
+}
 
-  .navbar-search input:focus::placeholder {
-    color: rgba(17, 17, 17, 0.45);
-  }
+.navbar-search input:focus::placeholder {
+  color: hsl(var(--foreground) / 0.38);
+}
 
-  .navbar-search:focus-within svg {
-    color: rgba(17, 17, 17, 0.55);
-  }
-
-  /* No white conversion on simple hover */
-  .navbar-search input:hover:not(:focus) {
-    border-color: hsl(var(--border));
-  }
+.navbar-search:focus-within svg {
+  color: hsl(var(--primary) / 0.75);
+}
 }
 
 /* =========================================================

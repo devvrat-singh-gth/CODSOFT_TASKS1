@@ -127,12 +127,34 @@ export async function listProducts(
     ];
   }
 
-  /*
-   * CATEGORY FILTER
-   */
-  if (query.category) {
-    filter.category = query.category;
+/*
+ * CATEGORY FILTER
+ *
+ * Frontend sends category slug:
+ * /categories/book
+ *
+ * Convert slug -> category _id before
+ * querying products.
+ */
+if (query.category) {
+  const category = await Category.findOne({
+    slug: query.category,
+    isActive: true,
+  }).select("_id");
+
+  if (!category) {
+    return {
+      products: [],
+      pagination: buildPaginationMeta(
+        0,
+        page,
+        limit
+      ),
+    };
   }
+
+  filter.category = category._id;
+}
 
   /*
    * BRAND FILTER
@@ -238,7 +260,18 @@ export async function listProducts(
     ),
   };
 }
+export async function getProductBySlug(slug: string) {
+  const product = await Product.findOne({
+    slug,
+    isActive: true,
+  }).populate("category", "name slug");
 
+  if (!product) {
+    throw ApiError.notFound("Product not found");
+  }
+
+  return product;
+}
 export async function getProductById(
   id: string
 ) {

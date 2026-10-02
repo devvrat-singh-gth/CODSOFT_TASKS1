@@ -1,28 +1,93 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { useWishlistStore } from "@/store/wishlistStore";
 import * as wishlistService from "@/services/wishlistService";
 import { useAuthStore } from "@/store/authStore";
 
-export function useWishlist() {
-  const { productIds, setIds } = useWishlistStore();
+interface UseWishlistOptions {
+  fetchOnMount?: boolean;
+}
+
+let wishlistRequest: Promise<unknown> | null = null;
+let wishlistRequestToken: string | null = null;
+
+export function useWishlist({
+  fetchOnMount = true,
+}: UseWishlistOptions = {}) {
+  const {
+    productIds,
+    setIds,
+  } = useWishlistStore();
+
   const token = useAuthStore((s) => s.token);
 
   useEffect(() => {
-    if (!token) return;
-    wishlistService.getWishlist().then((w) => setIds(w.products.map((p) => p._id)));
-  }, [token, setIds]);
+    if (!fetchOnMount || !token) {
+      return;
+    }
 
-  const toggle = async (productId: string) => {
+    if (
+      wishlistRequest &&
+      wishlistRequestToken === token
+    ) {
+      return;
+    }
+
+    wishlistRequestToken = token;
+
+    wishlistRequest = wishlistService
+      .getWishlist()
+      .then((wishlist) => {
+        setIds(
+          wishlist.products.map(
+            (product) => product._id
+          )
+        );
+      })
+      .finally(() => {
+        wishlistRequest = null;
+        wishlistRequestToken = null;
+      });
+  }, [
+    fetchOnMount,
+    token,
+    setIds,
+  ]);
+
+  const toggle = async (
+    productId: string
+  ) => {
     if (productIds.includes(productId)) {
-      const w = await wishlistService.removeFromWishlist(productId);
-      setIds(w.products.map((p) => p._id));
+      const wishlist =
+        await wishlistService.removeFromWishlist(
+          productId
+        );
+
+      setIds(
+        wishlist.products.map(
+          (product) => product._id
+        )
+      );
     } else {
-      const w = await wishlistService.addToWishlist(productId);
-      setIds(w.products.map((p) => p._id));
+      const wishlist =
+        await wishlistService.addToWishlist(
+          productId
+        );
+
+      setIds(
+        wishlist.products.map(
+          (product) => product._id
+        )
+      );
     }
   };
 
-  return { productIds, toggle, isWishlisted: (id: string) => productIds.includes(id) };
+  return {
+    productIds,
+    toggle,
+    isWishlisted: (id: string) =>
+      productIds.includes(id),
+  };
 }

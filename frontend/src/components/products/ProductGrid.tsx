@@ -15,7 +15,7 @@ export function ProductGrid({
 }) {
   if (loading) {
     return (
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:gap-5 2xl:gap-6">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:gap-5 2xl:gap-6">
         {Array.from({ length: 12 }).map((_, index) => (
           <motion.div
             key={index}
@@ -24,7 +24,7 @@ export function ProductGrid({
             transition={{
               delay: index * 0.03,
             }}
-            className="overflow-hidden rounded-3xl border border-border bg-card p-3"
+            className="h-full overflow-hidden rounded-3xl border border-border bg-card p-3"
           >
             <Skeleton className="aspect-square w-full rounded-2xl" />
 
@@ -54,7 +54,7 @@ export function ProductGrid({
     <AnimatePresence mode="popLayout">
       <motion.div
         layout
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:gap-5 2xl:gap-6"
+        className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:gap-5 2xl:gap-6"
       >
         {products.map((product) => (
           <motion.div
@@ -75,6 +75,7 @@ export function ProductGrid({
             transition={{
               duration: 0.25,
             }}
+            className="h-full"
           >
             <ProductCard product={product} />
           </motion.div>

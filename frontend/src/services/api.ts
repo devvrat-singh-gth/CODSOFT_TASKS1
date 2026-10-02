@@ -21,8 +21,17 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const message =
-      error?.response?.data?.message || error?.message || "Something went wrong";
-    return Promise.reject(new Error(message));
+      error?.response?.data?.message ||
+      error?.message ||
+      "Something went wrong";
+
+    const enhancedError = new Error(message) as Error & {
+      status?: number;
+    };
+
+    enhancedError.status = error?.response?.status;
+
+    return Promise.reject(enhancedError);
   }
 );
 

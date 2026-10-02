@@ -13,7 +13,13 @@ export const getProduct = catchAsync(async (req: AuthenticatedRequest, res: Resp
   const product = await productService.getProductById(req.params.id);
   sendSuccess(res, product);
 });
+export const getProductBySlug = catchAsync(
+  async (req: AuthenticatedRequest, res: Response) => {
+    const product = await productService.getProductBySlug(req.params.slug);
 
+    sendSuccess(res, product);
+  }
+);  
 export const createProduct = catchAsync(async (req: AuthenticatedRequest, res: Response) => {
   const files = (req.files as Express.Multer.File[]) || [];
   const product = await productService.createProduct(req.body, files);

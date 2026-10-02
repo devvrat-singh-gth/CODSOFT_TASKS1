@@ -86,9 +86,9 @@ export function ProductFilters({
         <option value="">All categories</option>
 
         {categories.map((c) => (
-          <option key={c._id} value={c._id}>
-            {c.name}
-          </option>
+<option key={c._id} value={c.slug}>
+  {c.name}
+</option>
         ))}
       </select>
     </div>

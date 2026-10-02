@@ -5,8 +5,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "AuraBazaar",
+  title: {
+    default: "aURaBazaar",
+    template: "%s | aURaBazaar",
+  },
   description: "A modern e-commerce storefront",
+  icons: {
+    icon: "/favicon.jpg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

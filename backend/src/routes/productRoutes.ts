@@ -23,6 +23,7 @@ router.post(
   validate(createProductSchema),
   ctrl.createProduct
 );
+
 router.put(
   "/:id",
   protect,
@@ -33,6 +34,7 @@ router.put(
 );
 router.patch("/:id/status", protect, requireAdmin, ctrl.setProductActive);
 router.delete("/:id/images/:publicId", protect, requireAdmin, ctrl.deleteProductImage);
-router.delete("/:id", protect, requireAdmin, ctrl.deleteProduct);
+router.delete("/:id", protect, requireAdmin,ctrl.getProduct, ctrl.deleteProduct);
+router.get("/slug/:slug", ctrl.getProductBySlug);
 
 export default router;

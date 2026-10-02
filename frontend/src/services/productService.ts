@@ -23,3 +23,10 @@ export async function getProductById(id: string) {
   const { data } = await api.get<{ data: Product }>(`/products/${id}`);
   return data.data;
 }
+export async function getProductBySlug(slug: string) {
+  const { data } = await api.get<{ data: Product }>(
+    `/products/slug/${slug}`
+  );
+
+  return data.data;
+}

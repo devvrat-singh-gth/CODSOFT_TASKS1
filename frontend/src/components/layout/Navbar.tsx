@@ -134,47 +134,7 @@ const pathname = usePathname();
    *
    * shirt → one request
    */
-  useEffect(() => {
-    const currentSearch =
-      searchParams.get("search") || "";
 
-    const nextSearch =
-      debouncedSearch.trim();
-
-    if (
-      currentSearch === nextSearch
-    ) {
-      return;
-    }
-
-    const params = new URLSearchParams(
-      window.location.search
-    );
-
-    if (nextSearch) {
-      params.set(
-        "search",
-        nextSearch
-      );
-    } else {
-      params.delete("search");
-    }
-
-    const query = params.toString();
-
-    router.replace(
-      query
-        ? `/products?${query}`
-        : "/products",
-      {
-        scroll: false,
-      }
-    );
-  }, [
-    debouncedSearch,
-    router,
-    searchParams,
-  ]);
 
   useEffect(() => {
     document.body.style.overflow =
@@ -342,54 +302,68 @@ const pathname = usePathname();
         {/* =====================================================
             BRAND
             ===================================================== */}
+<Link
+  href="/"
+  className="group flex shrink-0 items-center"
+  onClick={() => {
+    setSearch("");
+    closeMenu();
+  }}
+  aria-label="aURaBazaar home"
+>
+  <span
+  className="
+    relative block
+    h-10 w-[150px]
+    sm:h-11 sm:w-[165px]
+    lg:h-14 lg:w-[215px]
+    xl:h-16 xl:w-[240px]
+    2xl:h-[4.25rem] 2xl:w-[265px]
+-ml-5
+sm:ml-2
+lg:ml-0
+xl:-ml-2
+2xl:-ml-4
+  "
+>
+    {/* Dark mode */}
+    <Image
+      src="/logo.svg"
+      alt="aURaBazaar"
+      fill
+      priority
+      className="
+        object-contain
+        transition-all
+        duration-300
+        group-hover:scale-[1.02]
+        dark:opacity-100
+        dark:brightness-110
+        dark:saturate-110
+        light:opacity-0
+      "
+      sizes="180px"
+    />
 
-          <Link
-            href="/"
-            className="group shrink-0"
-            onClick={() => {
-              setSearch("");
-              closeMenu();
-            }}
-          >
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-xs font-bold text-primary-foreground shadow-glow transition-transform duration-300 group-hover:rotate-3">
-              A
-            </span>
-
-            <div className="hidden leading-none sm:block">
-              <span className="block text-[15px] font-bold tracking-tight">
-                A
-                <span className="brand-accent">
-                  ur
-                </span>
-                a
-                <span className="brand-accent">
-                  Bazaar
-                </span>
-              </span>
-
-              <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.16em] text-foreground/40">
-                a{" "}
-                <span className="brand-accent">
-                  UR
-                </span>{" "}
-                bazaar
-              </span>
-            </div>
-
-            <span className="text-[15px] font-bold tracking-tight sm:hidden">
-              A
-              <span className="brand-accent">
-                ur
-              </span>
-              a
-              <span className="brand-accent">
-                Bazaar
-              </span>
-            </span>
-          </div>
-        </Link>
-
+    {/* Light mode */}
+    <Image
+      src="/logo2.svg"
+      alt=""
+      fill
+      priority
+      className="
+        object-contain
+        transition-all
+        duration-300
+        group-hover:scale-[1.02]
+        opacity-100
+        dark:opacity-0
+      "
+      sizes="180px"
+      aria-hidden="true"
+    />
+  </span>
+</Link>
         {/* =====================================================
             MOBILE SEARCH
             ===================================================== */}
