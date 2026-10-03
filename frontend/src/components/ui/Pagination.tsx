@@ -43,7 +43,7 @@ export function Pagination({
           size="sm"
           variant={
             page === pagination.page
-              ? "default"
+              ? "primary"
               : "outline"
           }
           onClick={() =>
