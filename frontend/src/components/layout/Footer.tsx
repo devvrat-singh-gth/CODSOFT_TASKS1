@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUp,
   ArrowUpRight,
@@ -9,16 +10,20 @@ import {
   Instagram,
   Mail,
 } from "lucide-react";
+
 import { Container } from "./Container";
 
 export function Footer() {
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showBackToTop, setShowBackToTop] =
+    useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition =
         window.scrollY + window.innerHeight;
-      const pageHeight = document.documentElement.scrollHeight;
+
+      const pageHeight =
+        document.documentElement.scrollHeight;
 
       setShowBackToTop(
         scrollPosition >= pageHeight - 400
@@ -27,12 +32,19 @@ export function Footer() {
 
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
     };
   }, []);
 
@@ -47,26 +59,68 @@ export function Footer() {
     <footer className="relative border-t border-border/70 bg-background/45">
       <Container className="py-8 sm:py-12 xl:py-13 2xl:py-14">
         <div className="grid gap-7 md:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr] md:gap-10">
-          {/* Brand */}
+          {/* =====================================================
+              BRAND
+              ===================================================== */}
+
           <div className="max-w-sm">
-            {/* Mobile: logo + Shop button on the same row */}
+            {/* Mobile:
+                logo + Shop button on the same row
+            */}
             <div className="flex items-center justify-between gap-4 md:block">
               <Link
                 href="/"
-                className="group inline-flex items-center gap-2.5"
+                aria-label="aURaBazaar home"
+                className="group inline-flex shrink-0 items-center"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-xs font-bold text-primary-foreground shadow-glow transition-transform duration-300 group-hover:-rotate-3">
-                  A
-                </span>
+                <span
+                  className="
+                    relative block shrink-0
+                    h-10 w-[145px]
+                    sm:h-11 sm:w-[165px]
+                    md:h-12 md:w-[180px]
+                    lg:h-[3.25rem] lg:w-[195px]
+                    xl:h-14 xl:w-[210px]
+                    2xl:h-[3.75rem] 2xl:w-[225px]
+                  "
+                >
+                  {/* Dark mode logo */}
+                  <Image
+                    src="/logo.svg"
+                    alt="aURaBazaar"
+                    fill
+                    className="
+                      object-contain
+                      object-left
+                      opacity-0
+                      transition-all
+                      duration-300
+                      group-hover:scale-[1.02]
+                      dark:opacity-100
+                      dark:brightness-110
+                      dark:saturate-110
+                    "
+                    sizes="225px"
+                  />
 
-                <div>
-                  <span className="block text-base font-bold tracking-tight">
-                    A
-                    <span className="brand-accent">ur</span>
-                    a
-                    <span className="brand-accent">Bazaar</span>
-                  </span>
-                </div>
+                  {/* Light mode logo */}
+                  <Image
+                    src="/logo2.svg"
+                    alt=""
+                    fill
+                    className="
+                      object-contain
+                      object-left
+                      opacity-100
+                      transition-all
+                      duration-300
+                      group-hover:scale-[1.02]
+                      dark:opacity-0
+                    "
+                    sizes="225px"
+                    aria-hidden="true"
+                  />
+                </span>
               </Link>
 
               {/* Mobile-only Shop button */}
@@ -75,15 +129,18 @@ export function Footer() {
                 className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-card/50 px-3 py-2 text-xs font-medium text-foreground/70 transition-colors hover:border-primary/30 hover:bg-primary/10 hover:text-primary md:hidden"
               >
                 Shop
+
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 
             <p className="mt-3 text-[clamp(0.78rem,0.85vw,0.95rem)] leading-5 text-foreground/55 sm:mt-4 sm:leading-6">
-              A modern ecommerce experience for discovering electronics,
-              fashion, home products and everyday essentials.
+              A modern ecommerce experience for
+              discovering electronics, fashion, home
+              products and everyday essentials.
             </p>
 
+            {/* Social links */}
             <div className="mt-4 flex items-center gap-2 sm:mt-5">
               <a
                 href="#"
@@ -111,7 +168,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Mobile compact navigation wrapper */}
+          {/* =====================================================
+              MOBILE COMPACT NAVIGATION WRAPPER
+              ===================================================== */}
+
           <div className="grid grid-cols-2 gap-6 md:contents">
             {/* Shop */}
             <div>
@@ -170,13 +230,15 @@ export function Footer() {
                 >
                   Orders
                 </Link>
+
                 <Link
                   href="/login"
                   className="block text-[clamp(0.78rem,0.85vw,0.95rem)] text-foreground/60 transition-colors hover:text-primary"
                 >
                   Log in
                 </Link>
-                  <Link
+
+                <Link
                   href="/register"
                   className="block text-[clamp(0.78rem,0.85vw,0.95rem)] text-foreground/60 transition-colors hover:text-primary"
                 >
@@ -186,7 +248,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* About - desktop only */}
+          {/* =====================================================
+              ABOUT — DESKTOP ONLY
+              ===================================================== */}
+
           <div className="hidden md:block">
             <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
               AuraBazaar
@@ -194,8 +259,9 @@ export function Footer() {
 
             <div className="mt-4 space-y-3 text-sm text-foreground/60">
               <p className="leading-6">
-                Your everyday marketplace for discovering products that fit
-                your style, space and routine.
+                Your everyday marketplace for
+                discovering products that fit your
+                style, space and routine.
               </p>
 
               <Link
@@ -203,25 +269,37 @@ export function Footer() {
                 className="inline-flex items-center gap-1 font-medium text-foreground transition-colors hover:text-primary"
               >
                 Start shopping
+
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* =====================================================
+            BOTTOM BAR
+            ===================================================== */}
+
         <div className="mt-7 flex flex-col gap-2 border-t border-border pt-5 text-[0.68rem] text-foreground/40 sm:mt-9 sm:flex-row sm:items-center sm:justify-between sm:pt-5 sm:text-xs">
           <p>
-            © {new Date().getFullYear()} AuraBazaar. All rights reserved.
+            © {new Date().getFullYear()} AuraBazaar.
+            All rights reserved.
           </p>
 
           <p>
-            a <span className="brand-accent font-medium">UR</span> bazaar.
+            a{" "}
+            <span className="brand-accent font-medium">
+              UR
+            </span>{" "}
+            bazaar.
           </p>
         </div>
       </Container>
 
-      {/* Back to top */}
+      {/* =======================================================
+          BACK TO TOP
+          ======================================================= */}
+
       <button
         type="button"
         onClick={scrollToTop}

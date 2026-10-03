@@ -34,7 +34,7 @@ useEffect(() => {
     setActiveIndex((current) =>
       (current + 1) % products.length
     );
-  }, 3000);
+  }, 4000);
 
   return () => {
     window.clearInterval(timer);

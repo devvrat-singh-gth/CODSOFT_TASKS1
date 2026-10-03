@@ -8,26 +8,64 @@ export function Pagination({
   pagination: PaginationType;
   onPageChange: (page: number) => void;
 }) {
-  if (pagination.pages <= 1) return null;
+  if (pagination.pages <= 1) {
+    return null;
+  }
+
+  const pages: number[] = [];
+
+  for (
+    let i = 1;
+    i <= pagination.pages;
+    i++
+  ) {
+    pages.push(i);
+  }
 
   return (
-    <div className="flex items-center justify-center gap-2 py-8">
+    <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
       <Button
         variant="outline"
         size="sm"
-        disabled={pagination.page <= 1}
-        onClick={() => onPageChange(pagination.page - 1)}
+        disabled={pagination.page === 1}
+        onClick={() =>
+          onPageChange(
+            pagination.page - 1
+          )
+        }
       >
         Previous
       </Button>
-      <span className="text-sm text-foreground/70">
-        Page {pagination.page} of {pagination.pages}
-      </span>
+
+      {pages.map((page) => (
+        <Button
+          key={page}
+          size="sm"
+          variant={
+            page === pagination.page
+              ? "default"
+              : "outline"
+          }
+          onClick={() =>
+            onPageChange(page)
+          }
+        >
+          {page}
+        </Button>
+      ))}
+
       <Button
         variant="outline"
         size="sm"
-        disabled={pagination.page >= pagination.pages}
-        onClick={() => onPageChange(pagination.page + 1)}
+        disabled={
+          pagination.page >=
+          pagination.pages
+        }
+        onClick={() =>
+          onPageChange(
+            pagination.page + 1
+          )
+        }
       >
         Next
       </Button>

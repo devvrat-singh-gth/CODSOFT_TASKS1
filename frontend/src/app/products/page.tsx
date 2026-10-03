@@ -1,7 +1,11 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import {
+  useSearchParams,
+  useRouter,
+  usePathname,
+} from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -21,19 +25,22 @@ import { getCategories } from "@/services/categoryService";
 import { Category } from "@/types/category";
 
 function ProductsPageContent() {
-  const searchParams = useSearchParams();
+const searchParams = useSearchParams();
+const router = useRouter();
+const pathname = usePathname();
 
-  /*
-   * Navbar search is the single product-search input.
-   *
-   * Example:
-   * Navbar → /products?search=shoe
-   * Products page → reads "shoe" from the URL
-   */
-  const urlSearch = searchParams.get("search") || "";
+const urlSearch =
+  searchParams.get("search") || "";
 
-  const [search, setSearch] = useState(urlSearch);
-  const [page, setPage] = useState(1);
+const pageFromUrl = Number(
+  searchParams.get("page") || "1"
+);
+
+const [search, setSearch] =
+  useState(urlSearch);
+
+const [page, setPage] =
+  useState(pageFromUrl);
 
   const [filters, setFilters] = useState({
     category: "",
@@ -52,7 +59,9 @@ function ProductsPageContent() {
   useEffect(() => {
     setSearch(urlSearch);
   }, [urlSearch]);
-
+useEffect(() => {
+  setPage(pageFromUrl);
+}, [pageFromUrl]);
   /*
    * Load categories for the filter drawer.
    */
@@ -105,16 +114,30 @@ function ProductsPageContent() {
    * Any search/filter/sort change starts
    * pagination from page 1.
    */
-  useEffect(() => {
-    setPage(1);
-  }, [
-    search,
-    filters.sort,
-    filters.category,
-    filters.minPrice,
-    filters.maxPrice,
-  ]);
+useEffect(() => {
+  const params =
+    new URLSearchParams(
+      searchParams.toString()
+    );
 
+  params.delete("page");
+
+  router.replace(
+    `${pathname}?${params.toString()}`,
+    {
+      scroll: false,
+    }
+  );
+}, [
+  search,
+  filters.sort,
+  filters.category,
+  filters.minPrice,
+  filters.maxPrice,
+  pathname,
+  router,
+  searchParams,
+]);
   const { products, pagination, loading } = useProducts({
     search: search.trim() || undefined,
     sort: filters.sort,
@@ -241,10 +264,29 @@ function ProductsPageContent() {
             PAGINATION
             ===================================================== */}
         {pagination && (
-          <Pagination
-            pagination={pagination}
-            onPageChange={setPage}
-          />
+<Pagination
+  pagination={pagination}
+  onPageChange={(newPage) => {
+    const params =
+      new URLSearchParams(
+        searchParams.toString()
+      );
+
+    params.set(
+      "page",
+      String(newPage)
+    );
+
+    router.push(
+      `${pathname}?${params.toString()}`
+    );
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }}
+/>
         )}
       </Container>
 

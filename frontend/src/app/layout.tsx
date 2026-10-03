@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description: "A modern e-commerce storefront",
   icons: {
-    icon: "/favicon.jpg",
+    icon: "/favicon1.svg",
   },
 };
 
