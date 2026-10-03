@@ -53,7 +53,6 @@ export function Pagination({
           {page}
         </Button>
       ))}
-
       <Button
         variant="outline"
         size="sm"
